@@ -1,0 +1,7 @@
+version: '3'
+services:
+  snow-webhook:
+    build: .
+    container_name: command-webhook
+    ports:
+      - "5018:5018"
