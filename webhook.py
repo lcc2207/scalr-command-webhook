@@ -31,26 +31,20 @@ SCALR_URL = os.getenv('SCALR_URL', '')
 for var in ['SCALR_SIGNING_KEY', 'SCALR_URL']:
     logging.info('Config: %s = %s', var, globals()[var] if 'PASS' not in var else '*' * len(globals()[var]))
 
-
 @app.route("/command/", methods=['POST'])
 def webhook_listener():
     if not validate_request(request):
         abort(403)
-
     data = json.loads(request.data)
-    if 'eventName' not in data or 'data' not in data:
-        logging.info('Invalid request received')
-        abort(404)
-
     event = data['eventName']
     hostname = data['data']['SCALR_SERVER_HOSTNAME']
-    return_code = subprocess.call(args=["./scalr_cmd.sh", hostname])
+    ipaddress = data['data']['SCALR_INTERNAL_IP']
+    return_code = subprocess.call(args=["./scalr_cmd.sh", hostname, ipaddress, event])
     logging.info(return_code)
     return 'ok'
 
 
 def validate_request(request):
-    logging.debug('Missing signature headers')
     if 'X-Signature' not in request.headers or 'Date' not in request.headers:
         logging.debug('Missing signature headers')
         return False
