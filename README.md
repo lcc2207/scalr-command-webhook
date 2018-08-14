@@ -1,12 +1,12 @@
 # command demo webhook
 
-This webhook keeps Farm and Server records updated in ServiceNow.
+This webhook to kick off scripts you write
 
 
 # Instance setup.
 Execute "bootstrap.sh" on the target install
 
-This will install docker and pull down the SNOW webhook repo.
+This will install docker and pull down the comand-webhook repo.
 
 # Update the uwsgi.ini file with your settings
 
@@ -20,9 +20,6 @@ workers = 1
 master = true
 plugin = python
 env = SCALR_SIGNING_KEY=scalr_signing_key
-env = SNOW_URL=https://xxx.service-now.com/
-env = SNOW_USER=admin
-env = SNOW_PASS=password
 env = SCALR_URL=https://demo.scalr.com
 ```
 
