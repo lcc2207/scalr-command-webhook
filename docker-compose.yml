@@ -5,3 +5,6 @@ services:
     container_name: command-webhook
     ports:
       - "5018:5018"
+    volumes:
+      - /opt/scripts:/opt/scripts
+      - /var/log/webhook:/var/log/webhook

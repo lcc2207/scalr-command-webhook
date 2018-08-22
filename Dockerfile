@@ -14,4 +14,4 @@ COPY . /opt/command-webhook
 
 EXPOSE 5018
 
-CMD ["/usr/bin/uwsgi", "--ini", "/opt/command-webhook/uwsgi.ini"]
+CMD ["/usr/bin/uwsgi", "--ini", "/opt/command-webhook/uwsgi.ini", "--logto2", "/var/log/webhook/webhook.log"]

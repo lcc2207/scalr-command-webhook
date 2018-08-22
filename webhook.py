@@ -27,11 +27,12 @@ app = Flask(__name__)
 # Configuration variables
 SCALR_SIGNING_KEY = os.getenv('SCALR_SIGNING_KEY', '')
 SCALR_URL = os.getenv('SCALR_URL', '')
+SCALR_WEBHOOK = os.getenv('SCALR_WEBHOOK', '')
 
-for var in ['SCALR_SIGNING_KEY', 'SCALR_URL']:
+for var in ['SCALR_SIGNING_KEY', 'SCALR_URL', 'SCALR_WEBHOOK']:
     logging.info('Config: %s = %s', var, globals()[var] if 'PASS' not in var else '*' * len(globals()[var]))
 
-@app.route("/command/", methods=['POST'])
+@app.route('/' + SCALR_WEBHOOK + '/', methods=['POST'])
 def webhook_listener():
     if not validate_request(request):
         abort(403)
