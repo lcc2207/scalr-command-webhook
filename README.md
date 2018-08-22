@@ -21,6 +21,7 @@ master = true
 plugin = python
 env = SCALR_SIGNING_KEY=scalr_signing_key
 env = SCALR_URL=https://demo.scalr.com
+env = SCALR_WEBHOOK=command  # name of the webhook endpiont ex) http:/xxx:5018/command
 ```
 
 # Launch
