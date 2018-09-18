@@ -41,7 +41,8 @@ def webhook_listener():
     hostname = data['data']['SCALR_SERVER_HOSTNAME']
     ipaddress = data['data']['SCALR_INTERNAL_IP']
     command = data['data']['WEBHOOK_COMMAND']
-    return_code = subprocess.call(args=[ command, hostname, ipaddress, event])
+    variables = json.dumps(data['data'])
+    return_code = subprocess.call(args=[ command, hostname, ipaddress, event, variables ])
     logging.info(return_code)
     return 'ok'
 
