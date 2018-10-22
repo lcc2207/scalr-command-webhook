@@ -22,5 +22,8 @@ Berksfile.lock
 .zero-knife.rb
 Policyfile.lock.json
 
+# Scalr Kitchen Keys
+KEY_*
+
 # data bags
 # test/integration/data_bags/xxx/scalr-*.json
