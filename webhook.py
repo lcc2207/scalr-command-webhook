@@ -28,8 +28,9 @@ app = Flask(__name__)
 SCALR_SIGNING_KEY = os.getenv('SCALR_SIGNING_KEY', '')
 SCALR_URL = os.getenv('SCALR_URL', '')
 SCALR_WEBHOOK = os.getenv('SCALR_WEBHOOK', '')
+SCALR_COMMAND_GV = os.getenv('SCALR_COMMAND_GV', '')
 
-for var in ['SCALR_SIGNING_KEY', 'SCALR_URL', 'SCALR_WEBHOOK']:
+for var in ['SCALR_SIGNING_KEY', 'SCALR_URL', 'SCALR_WEBHOOK', 'SCALR_COMMAND_GV']:
     logging.info('Config: %s = %s', var, globals()[var] if 'PASS' not in var else '*' * len(globals()[var]))
 
 @app.route('/' + SCALR_WEBHOOK + '/', methods=['POST'])
