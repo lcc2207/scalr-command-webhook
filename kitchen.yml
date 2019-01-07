@@ -1,0 +1,39 @@
+---
+driver:
+  name: scalr
+  scalr_api_key_id: '<%= ENV['API_KEY'] %>'
+  scalr_api_key_secret: '<%= ENV['SECRET_KEY'] %>'
+  scalr_api_url: '<%= ENV['SCALR_URL'] %>'
+  scalr_env_id: '<%= ENV['SCALR_ENV'] %>'
+  scalr_project_id: '<%= ENV['SCALR_PROJECT'] %>'
+  scalr_server_instanceType: 't2.medium'
+  scalr_platform: 'ec2'
+  scalr_location: 'us-east-1'
+  scalr_base_farm_role:
+    security:
+      securityGroups:
+        - id: 'sg-03049e48'
+    networking:
+      networks:
+        - id: 'vpc-5818a621'
+      subnets:
+        - id: 'subnet-6b709a55'
+
+provisioner:
+  name: shell
+
+verifier:
+  name: inspec
+  reporter:
+    - junit:./inspec_output.xml
+
+platforms:
+- name: ubuntu-16.04
+  driver:
+    scalr_use_role: 1
+- name: centos7
+  driver:
+    scalr_use_role: 96624
+
+suites:
+  - name: default
