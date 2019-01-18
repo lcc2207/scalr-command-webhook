@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/microsoft/powershell/6/pwsh /opt/scripts/test.ps1
+/opt/microsoft/powershell/6/pwsh /opt/scripts/hostname.ps1
