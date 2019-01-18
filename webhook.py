@@ -43,10 +43,10 @@ def webhook_listener():
     ipaddress = data['data']['SCALR_INTERNAL_IP']
     command = data['data'][SCALR_COMMAND_GV]
     variables = json.dumps(data['data'])
-    return_code = subprocess.call(args=[ command, hostname, ipaddress, event, variables ])
+    # return_code = subprocess.call(args=[ command, hostname, ipaddress, event, variables ])
+    return_code = subprocess.check_output(args=[command, hostname, ipaddress, event, variables])
     logging.info(return_code)
-    return 'ok'
-
+    return(return_code)
 
 def validate_request(request):
     if 'X-Signature' not in request.headers or 'Date' not in request.headers:
