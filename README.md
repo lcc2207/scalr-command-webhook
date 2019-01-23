@@ -21,7 +21,7 @@ master = true
 plugin = python
 env = SCALR_SIGNING_KEY=scalr_signing_key
 env = SCALR_URL=https://demo.scalr.com
-env = SCALR_WEBHOOK=command  # name of the webhook endpiont ex) http:/xxx:5018/command
+env = SCALR_WEBHOOK=command  # name of the webhook endpiont ex) "command" so your full endpiont in scalr would be "http:/xxx:5018/command"
 env = SCALR_COMMAND_GV=WEBHOOK_COMMAND # the path to the .sh/exe/etc you need to execute
 ```
 
