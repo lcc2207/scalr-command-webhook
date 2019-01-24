@@ -30,7 +30,7 @@ verifier:
 platforms:
 - name: ubuntu-16.04
   driver:
-    scalr_use_role: 1
+    scalr_use_role: 96582
 - name: centos7
   driver:
     scalr_use_role: 96624
