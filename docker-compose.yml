@@ -1,6 +1,6 @@
 version: '3'
 services:
-  snow-webhook:
+  webhook:
     build: .
     container_name: command-webhook
     ports:
