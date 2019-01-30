@@ -1,10 +1,14 @@
 version: '3'
 services:
   webhook:
-    build: .
+    image: command-webhook
     container_name: command-webhook
     ports:
       - "5018:5018"
     volumes:
       - /opt/scripts:/opt/scripts
       - /var/log/webhook:/var/log/webhook
+    environment:
+      - SCALR_SIGNING_KEY=xxxx
+      - SCALR_WEBHOOK=command
+      - SCALR_COMMAND_GV=WEBHOOK_COMMAND
